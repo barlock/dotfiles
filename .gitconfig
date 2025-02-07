@@ -1,7 +1,6 @@
 [alias]
     cane = commit -a --amend --no-edit
-    cmp = git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull
-
+    cmp = ! git switch $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git pull
 
 [core]
 	# Use custom `.gitignore` and `.gitattributes`.
@@ -20,3 +19,7 @@
 
 [init]
 	defaultBranch = main
+
+[user]
+    name = Michael Barlock
+    email = barlockm@gmail.com
