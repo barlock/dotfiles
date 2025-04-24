@@ -2,10 +2,14 @@
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting || true
-git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten || true
-ln --force -s "$ZSH_CUSTOM/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM/themes/typewritten.zsh-theme"
-ln --force -s "$ZSH_CUSTOM/themes/typewritten/async.zsh" "$ZSH_CUSTOM/themes/async"
+ZSH_CUSTOM_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM_DIR}/plugins/zsh-syntax-highlighting || true
+git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM_DIR/themes/typewritten || true
+ln --force -s "$ZSH_CUSTOM_DIR/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM_DIR/themes/typewritten.zsh-theme"
+ln --force -s "$ZSH_CUSTOM_DIR/themes/typewritten/async.zsh" "$ZSH_CUSTOM_DIR/themes/async"
+
+echo "zsh" >> ~/.bash_profile
 
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/swaps
