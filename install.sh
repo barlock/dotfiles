@@ -9,7 +9,7 @@ git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM_DIR/themes/typew
 ln --force -s "$ZSH_CUSTOM_DIR/themes/typewritten/typewritten.zsh-theme" "$ZSH_CUSTOM_DIR/themes/typewritten.zsh-theme"
 ln --force -s "$ZSH_CUSTOM_DIR/themes/typewritten/async.zsh" "$ZSH_CUSTOM_DIR/themes/async"
 
-echo "zsh" >> ~/.bash_profile
+echo "zsh" >> ~/.bashrc
 
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/swaps
