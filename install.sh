@@ -21,3 +21,32 @@ rsync --exclude ".git/" \
   --exclude "brew.sh" \
   --exclude "README.md" \
   -avh --no-perms . ~;
+
+if [[ "${IS_ON_ONA:-}" == "true" ]]; then
+  claude-link-settings /workspaces/obsidian
+fi
+
+claude-link-settings() {                                                                                                              
+  local project_settings="${1:-.}/.claude/settings.local.json"                                                      
+  local home_settings="$HOME/.claude/settings.local.json"
+                                                                                                                        
+  if [ -L "$project_settings" ]; then                                                                                  
+    echo "Already symlinked"                                                                                           
+    return 0                                                                                                           
+  fi                                                                                                                   
+                                                                                                                        
+  mkdir -p "$HOME/.claude"                                                                                             
+                                                                                                                        
+  if [ -f "$project_settings" ] && [ -f "$home_settings" ]; then                                                     
+    echo "Both files exist. Replacing project copy with symlink to ~/"
+    rm "$project_settings"
+  fi
+
+  if [ -f "$home_settings" ]; then
+    mkdir -p "$(dirname "$project_settings")"
+    ln -s "$home_settings" "$project_settings"
+    echo "Linked $project_settings -> $home_settings"
+  else
+    echo "No settings.local.json found to link"
+  fi
+}
